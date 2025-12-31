@@ -7,4 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: '/suritoktok-portfolio/', // 저장소 이름과 반드시 동일
 })
