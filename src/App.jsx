@@ -189,65 +189,62 @@ const TECHNICIANS_DATA = [
         {/* Tech Profile Modal */}
         {selectedTech && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md animate-in fade-in duration-300">
-            <div className="bg-white w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300">
+            <div className="bg-white w-full max-w-2xl rounded-[2rem] overflow-y-auto shadow-2xl relative animate-in zoom-in-95 duration-300 max-h-[80vh]">
               <button 
                 onClick={() => setSelectedTech(null)}
-                className="absolute top-8 right-8 p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white z-20 transition-all active:scale-90"
+                className="absolute top-6 right-6 p-3
+                   bg-white/90 hover:bg-black/10
+                   backdrop-blur-md rounded-full
+                   z-20 transition-all active:scale-90"
               >
-                <X size={28} />
+                <X size={26} strokeWidth={2.5} className="text-slate-900" />
               </button>
 
-              <div className="flex flex-col md:flex-row h-full max-h-[90vh]">
-                <div className="md:w-1/2 relative h-[450px] md:h-auto">
-                  <img src={selectedTech.imageUrl} className="w-full h-full object-cover" alt={selectedTech.name} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent md:hidden"></div>
-                  <div className="absolute bottom-8 left-8 md:hidden">
-                      <h2 className="text-4xl font-black text-white">{selectedTech.name} 기술자</h2>
-                  </div>
-                </div>
-                <div className="md:w-1/2 p-12 overflow-y-auto bg-white">
-                  <div className="hidden md:block mb-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xs flex items-center gap-1.5 font-black text-green-600 bg-green-50 px-4 py-1.5 rounded-full border border-green-100">
-                        <ShieldCheck size={16} /> 수리톡톡 안심인증 전문가
-                      </span>
-                    </div>
-                    <h2 className="text-5xl font-black text-slate-900 tracking-tighter">{selectedTech.name} 기술자</h2>
-                  </div>
-                  
-                  <div className="flex items-center text-slate-400 font-bold text-lg mb-10">
+              {/* Top Image + Content */}
+              <div className="relative w-full">
+                <img
+                  src={selectedTech.imageUrl}
+                  alt={selectedTech.name}
+                  className="w-full h-56 object-cover opacity-30"
+                />
+                <div className="p-6">
+                  <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-4">
+                    {selectedTech.name} 기술자
+                  </h2>
+
+                  <div className="flex items-center text-slate-400 font-bold text-lg mb-6">
                     <MapPin size={22} className="mr-2" /> {selectedTech.location} · 경력 {selectedTech.experience}
                   </div>
 
                   {/* 검증 통계 영역 */}
-                  <div className="grid grid-cols-1 gap-4 mb-10">
-                    <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 space-y-6">
+                  <div className="grid grid-cols-1 gap-4 mb-8">
+                    <div className="bg-slate-50 p-4 rounded-[1.5rem] border border-slate-100 space-y-4">
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                          <div className="p-2.5 bg-white rounded-2xl text-blue-600 shadow-sm border border-slate-50">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-white rounded-2xl text-blue-600 shadow-sm border border-slate-50">
                             <ClipboardCheck size={24} />
                           </div>
-                          <span className="font-bold text-slate-500 text-lg">마지막 검증일</span>
+                          <span className="font-bold text-base text-slate-500">마지막 검증일</span>
                         </div>
-                        <span className="font-black text-slate-900 text-xl">{selectedTech.lastVerifiedDate}</span>
+                        <span className="font-black text-base text-slate-500">{selectedTech.lastVerifiedDate}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                          <div className="p-2.5 bg-white rounded-2xl text-blue-600 shadow-sm border border-slate-50">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-white rounded-2xl text-blue-600 shadow-sm border border-slate-50">
                             <History size={24} />
                           </div>
-                          <span className="font-bold text-slate-500 text-lg">함께한 수리 건수</span>
+                          <span className="font-bold text-base text-slate-500">함께한 수리 건수</span>
                         </div>
-                        <span className="font-black text-slate-900 text-xl">{selectedTech.repairCount.toLocaleString()}건</span>
+                        <span className="font-black text-base text-slate-500">{selectedTech.repairCount.toLocaleString()}건</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                          <div className="p-2.5 bg-white rounded-2xl text-blue-600 shadow-sm border border-slate-50">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-white rounded-2xl text-blue-600 shadow-sm border border-slate-50">
                             <Calendar size={24} />
                           </div>
-                          <span className="font-bold text-slate-500 text-lg">서비스 시작일</span>
+                          <span className="font-bold text-base text-slate-500">서비스 시작일</span>
                         </div>
-                        <span className="font-black text-slate-900 text-xl">{selectedTech.startDate}</span>
+                        <span className="font-black text-base text-slate-500">{selectedTech.startDate}</span>
                       </div>
                     </div>
                   </div>
@@ -259,11 +256,11 @@ const TECHNICIANS_DATA = [
                     </p>
                   </div>
 
-                  <div className="flex gap-4 sticky bottom-0 bg-white pt-6">
+                  <div className="flex gap-4 mb-6">
                     <a 
                       href="tel:1551-7784"
                       style={{ backgroundColor: brandColor }}
-                      className="flex-1 text-white font-black py-6 rounded-[1.5rem] flex items-center justify-center gap-3 hover:brightness-110 transition-all shadow-xl shadow-[#0088ff]/30 active:scale-95"
+                      className="flex-1 text-white font-black py-5 rounded-[1.5rem] flex items-center justify-center gap-3 hover:brightness-110 transition-all shadow-xl shadow-[#0088ff]/30 active:scale-95"
                     >
                       <Phone size={24} fill="currentColor" /> 전문가에게 지금 전화하기
                     </a>
@@ -273,6 +270,9 @@ const TECHNICIANS_DATA = [
             </div>
           </div>
         )}
+
+
+
 
         {/* Footer */}
         <footer className="bg-slate-900 text-slate-600 py-24">
